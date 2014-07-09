@@ -1,0 +1,39 @@
+/*!
+ * sarcasm.js
+ * http://4rg0n.github.io/sarcasm.js
+ * MIT licensed
+ *
+ * Copyright (C) 2014 Dominic Rönicke
+ */
+
+.animate {
+    -webkit-animation-duration: 2s;
+    animation-duration: 2s;
+    -webkit-animation-fill-mode: both;
+    animation-fill-mode: both;
+    animation-iteration-count:infinite;
+    -webkit-animation-iteration-count:infinite;
+}
+
+@-webkit-keyframes bounce {
+    0%, 20%, 50%, 80%, 100% {-webkit-transform: translateY(0);}
+    40% {-webkit-transform: translateY(-4px);}
+    60% {-webkit-transform: translateY(-25px);}
+}
+
+@-webkit-keyframes bounce {
+    0%, 20%, 50%, 80%, 100% {-webkit-transform: translateY(0);}
+    40% {-webkit-transform: translateY(-4px);}
+    60% {-webkit-transform: translateY(-2px);}
+}
+
+@keyframes sarcasm {
+    0%, 20%, 50%, 80%, 100% {transform: translateY(0);}
+    40% {transform: translateY(-4px);}
+    60% {transform: translateY(-2px);}
+}
+
+.bounce {
+    -webkit-animation-name: bounce;
+    animation-name: bounce;
+}

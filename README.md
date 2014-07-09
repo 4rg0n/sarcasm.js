@@ -5,6 +5,8 @@
 ## WTF?!
 
 Sarcasm.js was developed for tagging sarcasm in the web.
+It wraps the text in double quotes and animates them with CSS3 for a bouncing effect.
+When CSS3 transform is not available it falls back to JavaScript animation.
 
 ## Demo
 
@@ -34,6 +36,16 @@ Include in the end of your &lt;body&gt;&lt;/body&gt; tag:
         selector: 'sarcasm',
 
         //name of the CSS class(es) to set
-        cssClass: 'animate sarcasm'
+        cssClass: 'animate sarcasm',
+
+        //Falls back to JavaScript animation if CSS3 is not correctly supported... stupid IE! (unfinished do not use)
+        doFallback: false,
+
+        //Configuration for the JavaScript animation (unfinished do not use)
+        fallbackConfig: {
+            animationDelay: 2000, //2 seconds
+            animationDuration: 2000, //2 seconds
+            animationLoop: true
+        }
     });
 

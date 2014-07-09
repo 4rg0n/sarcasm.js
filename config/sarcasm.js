@@ -8,10 +8,5 @@
 
 //Initialize sarcasm.js
 SarcasmJs.initialize({
-
-    //name of the html tag (default)
-    selector: 'sarcasm',
-
-    //name of the CSS class(es) to set (default)
-    cssClass: 'animate bounce'
+    //see README.md for configuration
 });

@@ -20,7 +20,7 @@
             <h1>Sarcasm.js</h1>
             <p>Tags sarcasm in the web</p>
 
-            <p class="view"><a href="https://github.com/4rg0n/sarcasm.js">View the Project on GitHub <small>4rg0n/sarcasm.js</small></a></p>
+            <p class="view"><a href="https://github.com/4rg0n/sarcasm.js">View the Project on GitHub <small>4rg0n/sarcasm.min.js</small></a></p>
 
             <ul>
                 <li><a href="https://github.com/4rg0n/sarcasm.js/zipball/master">Download <strong>ZIP File</strong></a></li>
@@ -37,7 +37,10 @@
                 WTF?!
             </h3>
 
-            <p>Sarcasm.js was developed for tagging sarcasm in the web.</p>
+            <p>Sarcasm.js was developed for tagging sarcasm in the web.
+                It wraps the text in double quotes and animates them with CSS3 for a bouncing effect.
+                When CSS3 transform is not available it falls back to JavaScript animation (coming soon).
+            </p>
 
             <h3>
               <a name="demo" class="anchor" href="#demo">
@@ -55,13 +58,25 @@
                 Installation
             </h3>
 
-            <p>...</p>
+            <p>
+                <p>Include in your &lt;head&gt;&lt;/head&gt; tag:<p>
+
+<pre>
+<code>&lt;link rel="stylesheet" type="text/css" href="css/sarcasm.css"&gt;</code>
+</pre>
+                <p>Include in the end of your &lt;body&gt;&lt;/body&gt; tag:<p>
+
+<pre><code>&lt;script src="js/sarcasm.js"&gt;&lt;/script&gt;
+&lt;script src="config/sarcasm.min.js"&gt;&lt;/script&gt;
+</code></pre>
+
+            </p>
 
             <h3>
-              <a name="usage" class="anchor" href="#usage">
-                  <span class="octicon octicon-link"></span>
-              </a>
-              Usage
+                <a name="usage" class="anchor" href="#usage">
+                    <span class="octicon octicon-link"></span>
+                </a>
+                Usage
             </h3>
 
             <p>
@@ -78,7 +93,11 @@
                 Contributors
             </h3>
 
-            <p>none</p>
+            <p>
+                <ul>
+                <li><a href="https://github.com/4rg0n">4rg0n</a></li>
+                </ul>
+            </p>
 
             <h3>
                 <a name="support-or-contact" class="anchor" href="#support-or-contact">
@@ -87,7 +106,7 @@
                 Support or Contact
             </h3>
 
-            <p>...</p>
+            <p><a href="https://github.com/4rg0n">4rg0n</a></p>
         </section>
 
         <footer>
@@ -97,7 +116,7 @@
     </div>
 
     <script src="js/scale.fix.js"></script>
-    <script src="js/sarcasm.js"></script>
+    <script src="js/sarcasm.min.js"></script>
     <script src="config/sarcasm.js"></script>
     
   </body>

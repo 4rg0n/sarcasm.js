@@ -28,7 +28,17 @@ var SarcasmJs = (function()
         selector: 'sarcasm',
 
         //name of the CSS class(es) to set
-        cssClass: 'animate bounce',
+        cssClass: 'animate sarcasm',
+
+        //Falls back to JavaScript animation if CSS3 is not correctly supported... stupid IE!
+        doFallback: false,
+
+        //Configuration for the JavaScript animation
+        fallbackConfig: {
+            animationDelay: 2000, //2 seconds
+            animationDuration: 2000, //2 seconds
+            animationLoop: true
+        },
 
         //template
         template: '<span class="{0}">"</span>{1}<span class="{2}">"</span>'
@@ -54,14 +64,19 @@ var SarcasmJs = (function()
         //merge config with options
         extend(config, options);
 
-        //check whether browser supports transtitions
+        //check whether browser supports transformations
         if (supports('transform')) {
-           doWithCss();
-        } else {
-           doWithJs();
-        }
+            doWithCss();
+            loaded = true;
+        } else if (config.doFallback) {
 
-        loaded = true;
+            console.warn('It seems your browser does not support CSS3 animations.');
+
+            //TODO
+
+            //doWithJs();
+            loaded = true;
+        }
     }
 
     /**
@@ -71,7 +86,7 @@ var SarcasmJs = (function()
     {
         var tags =  getSarcasmTags();
 
-        for(var i = 0; i < tags.length; i++){
+        for (var i = 0; i < tags.length; i++){
 
             tags[i].innerHTML = sprintf(
                 config.template,
@@ -85,10 +100,77 @@ var SarcasmJs = (function()
 
     /**
      * Animates quotes with Js functions
+     *
+     * @todo finish animation with native javascript (worth writing own?)
+     *
+     * @comment Oooh, I hate doing this with Javascript...
      */
     function doWithJs()
     {
-        //TODO animate with Javascript for fallback
+        var tags =  getSarcasmTags(),
+            tag,
+            text,
+            quoteLeft,
+            quoteRight,
+            textSpan;
+
+        for (var i = 0; i < tags.length; i++){
+            tag = tags[i];
+            text = tag.innerHTML;
+
+            tag.innerHTML = '';
+
+            quoteLeft = buildQuote();
+            quoteRight = buildQuote();
+            textSpan = document.createElement('span');
+            textSpan.innerHTML = text;
+
+            tag.appendChild(quoteLeft);
+            tag.appendChild(textSpan);
+            tag.appendChild(quoteRight);
+
+            bounce(quoteLeft);
+            bounce(quoteRight);
+        }
+    }
+
+
+    function bounce(element)
+    {
+        move(element, 'bottom', 4, 200);
+    }
+
+    /**
+     * Moves an element in this direction.
+     *
+     * top
+     * bottom
+     * left
+     * right
+     *
+     * @param element
+     * @param {string} direction
+     * @param {int} distance (in pixels)
+     * @param {int} duration (in milliseconds)
+     */
+    function move(element, direction, distance, duration)
+    {
+        var delay = duration / distance,
+            id,
+            move = 0;
+
+        function doMove()
+        {
+            if (move >= distance) {
+                clearInterval(id)
+            }
+
+            move++;
+
+            element.style[direction] = move + 'px';
+        }
+
+        id = setInterval(doMove, delay);
     }
 
 
@@ -101,6 +183,22 @@ var SarcasmJs = (function()
     function getSarcasmTags()
     {
         return document.getElementsByTagName(config.selector);
+    }
+
+
+    /**
+     * Builds the span element with quote
+     *
+     * @returns {HTMLElement}
+     */
+    function buildQuote()
+    {
+        var span = document.createElement('span');
+
+        span.innerHTML = '"';
+        span.style.position = 'relative';
+
+        return span;
     }
 
 
@@ -145,7 +243,7 @@ var SarcasmJs = (function()
             return typeof args[number] != 'undefined'
                 ? args[number]
                 : match
-                ;
+            ;
         });
     }
 

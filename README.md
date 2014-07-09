@@ -6,7 +6,7 @@
 
 Sarcasm.js was developed for tagging sarcasm in the web.
 It wraps the text in double quotes and animates them with CSS3 for a bouncing effect.
-When CSS3 transform is not available it falls back to JavaScript animation.
+When CSS3 transform is not available it falls back to JavaScript animation (coming soon).
 
 ## Demo
 
@@ -22,7 +22,7 @@ Include in your &lt;head&gt;&lt;/head&gt; tag:
 Include in the end of your &lt;body&gt;&lt;/body&gt; tag:
 
     <script src="js/sarcasm.js"></script>
-    <script src="config/sarcasm.js"></script>
+    <script src="config/sarcasm.min.js"></script>
 
 
 ## Usage

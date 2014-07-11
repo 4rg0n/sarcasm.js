@@ -49,3 +49,8 @@ Include in the end of your &lt;body&gt;&lt;/body&gt; tag:
         }
     });
 
+## License
+
+[MIT License](http://opensource.org/licenses/MIT)
+
+Copyright (c) 2014 Dominic Rönicke

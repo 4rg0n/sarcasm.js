@@ -253,3 +253,22 @@ footer {
     color:#444;
   }
 }
+
+.logo {
+    background: url("../img/logo.png") top left no-repeat;
+    width: 64px;
+    height: 64px;
+    margin-left: 15px;
+}
+
+.title {
+    margin-top: 15px;
+}
+
+.float-left {
+    float: left;
+}
+
+.clear-both {
+    clear: both;
+}

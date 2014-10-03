@@ -79,21 +79,51 @@ var SarcasmJs = (function()
         }
     }
 
+
+    /**
+     * Sarcasmnize a string with html
+     *
+     * @param {string} html
+     */
+    function sarcasmnize(html)
+    {
+        if (supports('transform')) {
+            return doWithCss(html);
+        }
+    }
+
+
     /**
      * Animates quotes with CSS3 transformation
      */
-    function doWithCss()
+    function doWithCss(html)
     {
-        var tags =  getSarcasmTags();
+        var tags,
+            html = html || false;
 
-        for (var i = 0; i < tags.length; i++){
+        if (false !== html) {
 
-            tags[i].innerHTML = sprintf(
-                config.template,
-                config.cssClass,
-                tags[i].innerHTML,
-                config.cssClass
-            );
+            var startTag = new RegExp('<' + config.selector + '>'),
+                endTag = new RegExp('</' + config.selector + '>'),
+                quote = sprintf('<span class="{0}">"</span>', config.cssClass);
+
+            html = html.replace(startTag, quote);
+            html = html.replace(endTag, quote);
+
+            return html;
+
+        } else {
+            tags =  getSarcasmTags()
+
+            for (var i = 0; i < tags.length; i++){
+
+                tags[i].innerHTML = sprintf(
+                    config.template,
+                    config.cssClass,
+                    tags[i].innerHTML,
+                    config.cssClass
+                );
+            }
         }
     }
 
@@ -286,6 +316,7 @@ var SarcasmJs = (function()
      */
     return {
         initialize: initialize,
+        sarcasmnize: sarcasmnize,
         isLoaded: isLoaded
     }
 

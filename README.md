@@ -29,7 +29,7 @@ Include in the end of your &lt;body&gt;&lt;/body&gt; tag:
 
     What a <sarcasm>usefull</sarcasm> JavaScript function...
 
-## Configurtion
+## Configuration
 
     SarcasmJs.initialize({
         //name of the html tag
